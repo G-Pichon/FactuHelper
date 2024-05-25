@@ -2,15 +2,17 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-#st.set_page_config(layout="wide")
+# st.set_page_config(layout="wide")
 
 titre_str = "Assistant de Facturation Datatorii"
 
-st.set_page_config(page_title=titre_str, 
-                    page_icon="DtrLogoV2Full_Dark.svg", 
-                    layout="centered", 
-                    initial_sidebar_state="auto", 
-                    menu_items=None)
+st.set_page_config(
+    page_title=titre_str,
+    page_icon="DtrLogoV2Full_Dark.svg",
+    layout="centered",
+    initial_sidebar_state="auto",
+    menu_items=None,
+)
 
 
 st.image("DtrLogoV2Full_Dark.svg", width=150)
@@ -44,8 +46,9 @@ mesh_array = np.array(np.meshgrid(range_vector, range_vector, range_vector)).T.r
 df_solutions = pd.DataFrame(mesh_array, columns=[f"TJ1 - {TJ_1} €", f"TJ2 - {TJ_2} €", f"TJ3 - {TJ_3} €"])
 df_solutions["Total"] = df_solutions.iloc[:, 0] * TJ_1 + df_solutions.iloc[:, 1] * TJ_2 + df_solutions.iloc[:, 2] * TJ_3
 
-st.write(f"Voici les combinaisons possibles. Les colonnes peuvent êtres triées pour minimiser ou maximiser certaines prestations. L'incrément est fixé à {increment} jour.")
+st.write(
+    f"Voici les combinaisons possibles. Les colonnes peuvent êtres triées pour minimiser ou maximiser"
+    f" certaines prestations. L'incrément est fixé à {increment} jour."
+)
 
-st.dataframe(df_solutions[df_solutions["Total"] == total_sum]
-             ,hide_index=True
-             ,use_container_width=True)
+st.dataframe(df_solutions[df_solutions["Total"] == total_sum], hide_index=True, use_container_width=True)
