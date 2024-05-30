@@ -1,11 +1,6 @@
 import pandas as pd
 import streamlit as st
-
-from pandas.api.types import (
-    is_datetime64_any_dtype,
-    is_numeric_dtype,
-    is_object_dtype,
-)
+from pandas.api.types import is_datetime64_any_dtype, is_numeric_dtype, is_object_dtype
 
 
 def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:

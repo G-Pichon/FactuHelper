@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import streamlit as st
+
 from helper import filter_dataframe
 
 titre_str = "Assistant de Facturation Datatorii"
@@ -52,4 +53,6 @@ st.write(
     f" certaines prestations. L'incrément est fixé à {increment} jour."
 )
 
-st.dataframe(filter_dataframe(df_solutions[df_solutions["Total"] == total_sum]),hide_index=True, use_container_width=True)
+st.dataframe(
+    filter_dataframe(df_solutions[df_solutions["Total"] == total_sum]), hide_index=True, use_container_width=True
+)
