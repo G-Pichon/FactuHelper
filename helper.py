@@ -3,7 +3,7 @@ import streamlit as st
 from pandas.api.types import is_datetime64_any_dtype, is_numeric_dtype, is_object_dtype
 
 
-def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
+def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:  # noqa C901
     """
     Adds a UI on top of a dataframe to let viewers filter columns
 
@@ -25,7 +25,7 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
         if is_object_dtype(df[col]):
             try:
                 df[col] = pd.to_datetime(df[col])
-            except Exception:
+            except ValueError:
                 pass
 
         if is_datetime64_any_dtype(df[col]):
